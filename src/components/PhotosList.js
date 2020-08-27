@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const PhotosList = props => {
     return(
         <div className="photo-list" key={props.id}>
