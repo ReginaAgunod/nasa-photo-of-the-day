@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
-import PhotoList from './PhotosList';
+import PhotosList from './PhotosList';
 
 export default function Photos() {
     const [photo, setPhoto] = useState([]);
@@ -8,24 +8,25 @@ export default function Photos() {
     useEffect(() => {
         axios
             .get ('https://api.nasa.gov/planetary/apod?api_key=Th3avoq2W903Jn9yRIHQmq8p8owYvtlrInGRUaH0')
-            .then ((res) =>{
+            .then(res => {
                 const photo = res.data;
-                console.log("Did you work?", photo);
+                console.log("Do you work?", res);
                 setPhoto(photo);
             })
             .catch(error => {
-                console.log("Yo gone GOOFED", error);
+                console.log("Ya gone GOOFED", error);
             });
     },[]);
 
 
     return (
         <div className="photo">
-            <PhotoList
+            < PhotosList
             title= {photo.title}
             picture= {photo.url}
             date = {photo. date}
             description= {photo.explanation}
+            copyright= {photo.copyright}
             />
         </div>
     )
